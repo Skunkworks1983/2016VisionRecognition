@@ -1,0 +1,11 @@
+#ifndef TUNING_VALUES_H
+#define TUNING_VALUES_H
+
+#define MOVE_TOWARD_CAMERA_P .5
+#define MOVE_TOWARD_CAMERA_I 0.0001
+#define MOVE_TOWARD_CAMERA_D 0
+#define MOVE_TOWARD_CAMERA_F 0
+
+
+
+#endif
