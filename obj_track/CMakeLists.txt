@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project( tracker )
 find_package( OpenCV REQUIRED )
-add_executable( tracker tracker.cpp )
+add_executable( tracker tracker.cpp Shape.cpp DebugDisplay.cpp MessageSender.cpp )
 target_link_libraries( tracker ${OpenCV_LIBS} )
 target_link_libraries(tracker wiringPi)

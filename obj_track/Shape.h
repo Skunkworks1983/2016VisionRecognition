@@ -1,36 +1,32 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-struct Shape {
-	int maxX;
-	int maxY;
-	int minX;
-	int minY;
-	double whitePercentage;
+#define ASPECT_RATIO (22.5 / 18)
+#define MIN_AREA 2500
+#define AREA_PERCENTAGE .3
 
-	int getArea() {
-		return (maxX - minX) * (maxY - minY);
-	}
+class Shape {
+  public:
+    int maxX;
+    int maxY;
+    int minX;
+    int minY;
+    double whitePercentage;
 
-	int getMidX() {
-		return (maxX + minX) / 2;
-	}
-	int getMidY() {
-		return (maxY + minY) / 2;
-	}
+    Shape(cv::vector<cv::Point> p);
+    
+    int getArea();
 
-	float getAspectRatio() {
-		return (maxY - minY) / (maxX - minX);
-	}
+    int getMidX();
+    int getMidY();
 
-	float getPercentError() {
-		return fabs(ASPECT_RATIO - this->getAspectRatio()) / ASPECT_RATIO;
-	}
+    float getAspectRatio();
 
-	bool isBetter(Shape *shape) {
-		return this->getArea() / this->getPercentError()
-				> shape->getArea() / shape->getPercentError();
-	}
+    float getPercentError();
+
+    bool isBetter(Shape *shape);
+    void calcWhitePercentage(cv::Mat imgThresh);
+    bool shapeIsViable();
 };
 
 #endif
